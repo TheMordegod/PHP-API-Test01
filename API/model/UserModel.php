@@ -1,4 +1,8 @@
 <?php 
+namespace api\model;
+
+use mysqli;
+
 class UserModel{
     private $conn;
 

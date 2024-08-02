@@ -1,5 +1,10 @@
 <?php 
-include '/Xampp/htdocs/First/API/model/userModel.php';
+namespace api\controller;
+
+use api\model\userModel;
+use mysqli;
+use Exception;
+
 class UserController {
     private $userModel;
     private $requestMethod;

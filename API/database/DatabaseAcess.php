@@ -1,8 +1,11 @@
 <?php 
-use Dotenv\Dotenv;
-require "/Xampp/htdocs/First/vendor/autoload.php";
+namespace api\database;
 
-$dotenv = Dotenv::createImmutable("/Xampp/htdocs/First/");
+use Dotenv\Dotenv;
+use mysqli;
+use mysqli_sql_exception;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../..');
 $dotenv->load();
 
 class DataBaseAcess {
@@ -30,7 +33,7 @@ class DataBaseAcess {
             $this->conn = new mysqli($this->DB_HOST,$this->DB_USER,$this->DB_PASS,$this->DB_NAME);
         } 
         catch(mysqli_sql_exception $e) {
-            header($e->getMessage(), true, 401);
+            header($e->getMessage(), true, 500);
             die('connection failed: '. $e->getMessage());
         }
                 
